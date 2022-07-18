@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Script/Player/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://Script/Player/Hand.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Prefabs/Weapons/Shotgun.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/Weapons/Pistol.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Script/Player/Inventory.gd" type="Script" id=6]
+[ext_resource path="res://User Interface/InventoryUI.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.25
@@ -52,3 +53,7 @@ margin_right = 10.5
 margin_bottom = 10.5
 texture = ExtResource( 3 )
 expand = true
+
+[node name="InventoryUI" parent="." instance=ExtResource( 7 )]
+
+[connection signal="update_ui" from="Head/Camera/RayCast/Inventory" to="InventoryUI" method="_on_Inventory_update_ui"]

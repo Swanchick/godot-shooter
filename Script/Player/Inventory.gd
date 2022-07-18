@@ -1,5 +1,7 @@
 extends Spatial
 
+signal update_ui(weapons)
+
 var weapons: Array = []
 var current_weapon: Spatial
 
@@ -17,6 +19,8 @@ func can_add(weapon: String) -> bool:
 
 func add_weapon(weapon: String):
 	weapons.append(weapon)
+	
+	emit_signal("update_ui", weapons)
 	
 	if current_weapon != null: return
 	
