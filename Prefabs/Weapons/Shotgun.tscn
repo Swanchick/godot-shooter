@@ -1,0 +1,158 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Models/Shotgun.glb" type="PackedScene" id=1]
+[ext_resource path="res://Textures/Models/Shotgun.tres" type="Material" id=2]
+[ext_resource path="res://Models/default2.material" type="Material" id=3]
+[ext_resource path="res://Script/weapon/Shotgun.gd" type="Script" id=4]
+[ext_resource path="res://Prefabs/test/Sphere.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Frame:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Frame:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Frame/Bolt:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Shoot"
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray(  )
+tracks/1/type = "value"
+tracks/1/path = NodePath("Frame:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0791585, 0.224294 ),
+"transitions": PoolRealArray( 1, 0.466517, 2.46229 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 1.25 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Frame:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.0748826, 0.224294 ),
+"transitions": PoolRealArray( 1, 0.466517, 2.46229 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ), Vector3( 105, 0, 0 ), Vector3( 90, 0, 0 ) ]
+}
+tracks/3/type = "transform"
+tracks/3/path = NodePath("Frame/Bolt")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = PoolRealArray(  )
+tracks/4/type = "value"
+tracks/4/path = NodePath("Frame/Bolt:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.342319, 0.487303, 0.554701 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, -4.37114e-08 ), Vector3( 0, -3.10588e-22, -7.10543e-15 ) ]
+}
+
+[sub_resource type="ArrayMesh" id=3]
+resource_name = "Shotgun_cylinder3"
+surfaces/0 = {
+"aabb": AABB( -0.189403, -3.42357, -0.702545, 0.36857, 2.13799, 0.527824 ),
+"array_data": PoolByteArray( 1, 117, 55, 62, 180, 27, 91, 192, 49, 157, 219, 190, 251, 83, 21, 213, 243, 47, 0, 62, 180, 27, 91, 192, 176, 10, 65, 190, 23, 39, 240, 215, 147, 220, 167, 187, 180, 27, 91, 192, 229, 233, 50, 190, 0, 0, 1, 192, 188, 173, 10, 190, 180, 27, 91, 192, 176, 10, 65, 190, 233, 216, 240, 215, 202, 242, 65, 190, 180, 27, 91, 192, 49, 157, 219, 190, 5, 172, 22, 213, 188, 173, 10, 190, 180, 27, 91, 192, 245, 217, 51, 191, 190, 170, 218, 162, 147, 220, 167, 187, 180, 27, 91, 192, 134, 62, 46, 191, 239, 84, 2, 128, 243, 47, 0, 62, 180, 27, 91, 192, 245, 217, 51, 191, 66, 85, 218, 162, 1, 117, 55, 62, 209, 141, 164, 191, 49, 157, 219, 190, 251, 83, 235, 42, 243, 47, 0, 62, 209, 141, 164, 191, 176, 10, 65, 190, 23, 39, 16, 40, 243, 47, 0, 62, 209, 141, 164, 191, 245, 217, 51, 191, 66, 85, 38, 93, 147, 220, 167, 187, 209, 141, 164, 191, 134, 62, 46, 191, 239, 84, 254, 127, 188, 173, 10, 190, 209, 141, 164, 191, 245, 217, 51, 191, 190, 170, 38, 93, 202, 242, 65, 190, 209, 141, 164, 191, 49, 157, 219, 190, 5, 172, 234, 42, 188, 173, 10, 190, 209, 141, 164, 191, 176, 10, 65, 190, 233, 216, 16, 40, 147, 220, 167, 187, 209, 141, 164, 191, 229, 233, 50, 190, 0, 0, 255, 63 ),
+"array_index_data": PoolByteArray( 7, 0, 1, 0, 0, 0, 1, 0, 3, 0, 2, 0, 3, 0, 5, 0, 4, 0, 6, 0, 1, 0, 7, 0, 3, 0, 6, 0, 5, 0, 1, 0, 6, 0, 3, 0, 0, 0, 9, 0, 8, 0, 0, 0, 1, 0, 9, 0, 7, 0, 8, 0, 10, 0, 7, 0, 0, 0, 8, 0, 6, 0, 10, 0, 11, 0, 6, 0, 7, 0, 10, 0, 5, 0, 11, 0, 12, 0, 5, 0, 6, 0, 11, 0, 4, 0, 12, 0, 13, 0, 4, 0, 5, 0, 12, 0, 3, 0, 13, 0, 14, 0, 3, 0, 4, 0, 13, 0, 3, 0, 1, 0, 2, 0, 1, 0, 15, 0, 9, 0, 15, 0, 3, 0, 14, 0, 1, 0, 3, 0, 15, 0, 8, 0, 11, 0, 10, 0, 11, 0, 13, 0, 12, 0, 13, 0, 15, 0, 14, 0, 15, 0, 8, 0, 9, 0, 8, 0, 13, 0, 11, 0, 13, 0, 8, 0, 15, 0 ),
+"blend_shape_data": [  ],
+"format": 2194691,
+"index_count": 84,
+"material": ExtResource( 3 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 16
+}
+
+[sub_resource type="ArrayMesh" id=1]
+resource_name = "Shotgun_cube4_extract14"
+surfaces/0 = {
+"aabb": AABB( -0.0446967, 1.14786, -0.365149, 0.082319, 0.264936, 0.314424 ),
+"array_data": PoolByteArray( 86, 15, 26, 61, 62, 214, 180, 63, 228, 150, 173, 190, 105, 76, 90, 75, 86, 15, 26, 61, 62, 90, 169, 63, 168, 148, 75, 190, 192, 53, 82, 45, 86, 15, 26, 61, 58, 163, 158, 63, 129, 35, 129, 190, 114, 65, 104, 191, 86, 15, 26, 61, 156, 198, 156, 63, 193, 244, 186, 190, 193, 87, 30, 175, 222, 19, 55, 189, 156, 198, 156, 63, 193, 244, 186, 190, 63, 168, 30, 175, 222, 19, 55, 189, 62, 214, 180, 63, 228, 150, 173, 190, 151, 179, 90, 75, 222, 19, 55, 189, 58, 163, 158, 63, 129, 35, 129, 190, 142, 190, 104, 191, 222, 19, 55, 189, 62, 90, 169, 63, 168, 148, 75, 190, 56, 202, 77, 45, 222, 19, 55, 189, 163, 82, 156, 63, 190, 186, 35, 190, 240, 176, 225, 183, 222, 19, 55, 189, 128, 179, 163, 63, 37, 140, 4, 190, 127, 202, 11, 39, 86, 15, 26, 61, 163, 82, 156, 63, 190, 186, 35, 190, 16, 79, 225, 183, 86, 15, 26, 61, 128, 179, 163, 63, 37, 140, 4, 190, 129, 53, 11, 39, 222, 19, 55, 189, 37, 237, 146, 63, 75, 233, 145, 189, 59, 205, 115, 188, 222, 19, 55, 189, 46, 207, 150, 63, 192, 196, 79, 189, 23, 208, 168, 2, 86, 15, 26, 61, 37, 237, 146, 63, 75, 233, 145, 189, 197, 50, 115, 188, 86, 15, 26, 61, 46, 207, 150, 63, 192, 196, 79, 189, 232, 47, 168, 2 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 3, 0, 5, 0, 4, 0, 3, 0, 0, 0, 5, 0, 3, 0, 6, 0, 2, 0, 3, 0, 4, 0, 6, 0, 4, 0, 7, 0, 6, 0, 4, 0, 5, 0, 7, 0, 6, 0, 9, 0, 8, 0, 6, 0, 7, 0, 9, 0, 2, 0, 8, 0, 10, 0, 2, 0, 6, 0, 8, 0, 1, 0, 5, 0, 0, 0, 1, 0, 7, 0, 5, 0, 1, 0, 10, 0, 11, 0, 1, 0, 2, 0, 10, 0, 7, 0, 11, 0, 9, 0, 7, 0, 1, 0, 11, 0, 8, 0, 13, 0, 12, 0, 8, 0, 9, 0, 13, 0, 10, 0, 12, 0, 14, 0, 10, 0, 8, 0, 12, 0, 11, 0, 14, 0, 15, 0, 11, 0, 10, 0, 14, 0, 9, 0, 15, 0, 13, 0, 9, 0, 11, 0, 15, 0, 14, 0, 13, 0, 15, 0, 14, 0, 12, 0, 13, 0 ),
+"blend_shape_data": [  ],
+"format": 2194691,
+"index_count": 84,
+"material": ExtResource( 3 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 16
+}
+
+[sub_resource type="SpatialMaterial" id=4]
+
+[node name="Shotgun" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+weapon_name = "shotgun"
+sphere = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+anims/RESET = SubResource( 5 )
+anims/Shoot = SubResource( 6 )
+
+[node name="Frame" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+material/0 = ExtResource( 2 )
+
+[node name="Bolt" type="MeshInstance" parent="Frame" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 2.84217e-14, 0, -2.84217e-14, 1, 0, 0, 0 )
+mesh = SubResource( 3 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="Trigger" type="MeshInstance" parent="Frame" index="1"]
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 4 )
+
+[node name="Bolt" parent="." index="3"]
+visible = false

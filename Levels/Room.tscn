@@ -1,0 +1,157 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Prefabs/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Materials/d_floor.tres" type="Material" id=2]
+[ext_resource path="res://Script/Levels/Room.gd" type="Script" id=4]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+background_color = Color( 0.27451, 0.27451, 0.27451, 1 )
+fog_enabled = true
+fog_color = Color( 0, 0, 0, 1 )
+fog_sun_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+fog_depth_begin = 0.1
+fog_depth_end = 20.0
+tonemap_mode = 4
+ssao_radius = 0.1
+ssao_intensity = 128.0
+dof_blur_far_distance = 4.41
+glow_intensity = 8.0
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.5, 1.25, 1 )
+
+[node name="Room" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.25, 15.25 )
+speed = 6.0
+jump_force = 1.0
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+use_in_baked_light = true
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 10.25 )
+invert_faces = true
+width = 3.5
+height = 3.0
+depth = 5.0
+material = ExtResource( 2 )
+
+[node name="CSGBox3" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.5, 9 )
+invert_faces = true
+width = 3.0
+depth = 1.5
+material = ExtResource( 2 )
+
+[node name="CSGBox7" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, 13 )
+invert_faces = true
+width = 1.0
+depth = 0.5
+material = ExtResource( 2 )
+
+[node name="CSGBox8" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.75, 15.25 )
+invert_faces = true
+height = 2.5
+depth = 4.0
+material = ExtResource( 2 )
+
+[node name="CSGBox4" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8 )
+invert_faces = true
+width = 1.5
+depth = 0.5
+material = ExtResource( 2 )
+
+[node name="CSGBox5" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5.25 )
+invert_faces = true
+width = 4.0
+height = 3.0
+depth = 5.0
+material = ExtResource( 2 )
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 1.5, 4 )
+invert_faces = true
+width = 0.5
+depth = 1.0
+material = ExtResource( 2 )
+
+[node name="CSGBox9" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.375, 1.5, 4.5 )
+invert_faces = true
+width = 0.75
+depth = 1.0
+material = ExtResource( 2 )
+
+[node name="CSGBox10" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.75, 1.75, 4.5 )
+invert_faces = true
+width = 4.0
+height = 2.5
+material = ExtResource( 2 )
+
+[node name="CSGBox11" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.5, 4.5 )
+invert_faces = true
+width = 0.5
+depth = 1.0
+material = ExtResource( 2 )
+
+[node name="CSGBox12" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 2, 4.5 )
+invert_faces = true
+width = 5.0
+height = 3.0
+depth = 3.5
+material = ExtResource( 2 )
+
+[node name="CSGBox6" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 2, 4 )
+invert_faces = true
+width = 5.5
+height = 3.0
+depth = 4.5
+material = ExtResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="OmniLight5" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.75, 10.25 )
+
+[node name="OmniLight7" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 2.75, 4 )
+
+[node name="OmniLight6" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, 15.25 )
+
+[node name="OmniLight2" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3, 5.5 )
+
+[node name="OmniLight3" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 3, 4 )
+
+[node name="OmniLight4" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.75, 2.75, 4.5 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1.75, 4.5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 2 )
+
+[node name="Anchor" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.5, 0.5, 4.5 )
+
+[node name="Anchor1" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.5, 15.25 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_player_enter"]

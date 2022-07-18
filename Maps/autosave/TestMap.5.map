@@ -1,0 +1,16 @@
+// Game: Qodot
+// Format: Standard
+// entity 0
+{
+"classname" "worldspawn"
+"_tb_textures" "textures/Floor;textures/Wall"
+// brush 0
+{
+( -128 -64 -16 ) ( -128 -63 -16 ) ( -128 -64 -15 ) Floor/room_floor 16 0 0 1 1
+( -128 -128 -16 ) ( -128 -128 -15 ) ( -127 -128 -16 ) Floor/room_floor 32 0 0 1 1
+( -128 -64 -16 ) ( -127 -64 -16 ) ( -128 -63 -16 ) Floor/room_floor 32 -16 0 1 1
+( 16 48 0 ) ( 16 49 0 ) ( 17 48 0 ) Floor/room_floor 32 -16 0 1 1
+( 16 128 0 ) ( 17 128 0 ) ( 16 128 1 ) Floor/room_floor 32 0 0 1 1
+( 128 48 0 ) ( 128 48 1 ) ( 128 49 0 ) Floor/room_floor 16 0 0 1 1
+}
+}

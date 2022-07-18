@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Script/Player/PlayerMovement.gd" type="Script" id=1]
+[ext_resource path="res://Script/Player/Hand.gd" type="Script" id=2]
+[ext_resource path="res://Textures/Crosshaire.png" type="Texture" id=3]
+[ext_resource path="res://Prefabs/Weapons/Shotgun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Weapons/Pistol.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Script/Player/Inventory.gd" type="Script" id=6]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.25
+
+[node name="Player" type="KinematicBody" groups=["player"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.758435, 0 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499951, 0 )
+script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="Head"]
+
+[node name="RayCast" type="RayCast" parent="Head/Camera"]
+transform = Transform( 1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, -200, 0 )
+
+[node name="Inventory" type="Spatial" parent="Head/Camera/RayCast"]
+transform = Transform( 1, 0, 1.59578e-37, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 6 )
+
+[node name="Shotgun" parent="Head/Camera/RayCast/Inventory" instance=ExtResource( 4 )]
+transform = Transform( 0.1, -3.65072e-31, 8.35187e-24, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0.082, -0.215, 0.177 )
+visible = false
+
+[node name="Pistol" parent="Head/Camera/RayCast/Inventory" instance=ExtResource( 5 )]
+transform = Transform( -0.04, 6.03983e-09, -2.64009e-16, 2.36658e-30, -1.74846e-09, -0.04, -6.03983e-09, -0.04, 1.74846e-09, 0.082, -0.215, 0.177 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.5
+margin_top = -10.5
+margin_right = 10.5
+margin_bottom = 10.5
+texture = ExtResource( 3 )
+expand = true
