@@ -11,6 +11,7 @@ extents = Vector3( 0.25, 0.75, 0.25 )
 
 [node name="WeaponItem" type="Spatial"]
 script = ExtResource( 2 )
+weapon_class = "pistol"
 
 [node name="Weapon" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, 0.5, 0 )

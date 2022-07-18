@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://Textures/Wall/Wall3.png" type="Texture" id=4]
 [ext_resource path="res://Textures/Wall/Wall2.png" type="Texture" id=5]
 [ext_resource path="res://Textures/Floor/Floor4.png" type="Texture" id=6]
-[ext_resource path="res://Prefabs/Items/WeaponItem.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/Items/PistolItem.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/Items/ShotgunItem.tscn" type="PackedScene" id=8]
 [ext_resource path="res://default_env.tres" type="Environment" id=9]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -192,8 +193,6 @@ omni_range = 10.0
 
 [node name="WeaponItem" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0, 12.25 )
-weapon_class = "pistol"
 
-[node name="WeaponItem2" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 12.25 )
-weapon_class = "shotgun"
+[node name="WeaponItem2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 12.25 )
