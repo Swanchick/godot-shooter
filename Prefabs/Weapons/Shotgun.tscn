@@ -133,6 +133,7 @@ surfaces/0 = {
 [node name="Shotgun" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 weapon_name = "shotgun"
+slot = 2
 sphere = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]

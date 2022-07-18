@@ -6,6 +6,7 @@ var shoot_raycast: RayCast = get_parent()
 var final_pos: Vector3 = Vector3.ZERO
 
 export var weapon_name: String = "base"
+export var slot: int = 1
 
 export var weapon_sway: float = 5
 export var weapon_accelaration: float = 0.1
@@ -46,9 +47,9 @@ func _shoot():
 
 
 func _process(delta):
-	if not is_visible_in_tree(): return
-	
 	transform.origin = transform.origin.linear_interpolate(start_pos - final_pos, weapon_sway * delta)
+	
+	if not is_visible_in_tree(): return
 	
 	if Input.is_action_pressed("fire"):
 		_shoot()
