@@ -4,8 +4,9 @@ var direction = Vector3()
 var movement = Vector3()
 var a_velocity = Vector3()
 var g_velocity = Vector3()
+var full_connected: bool = false
 
-onready var inventory: Spatial = $Head/Camera/RayCast/Inventory
+onready var inventory = $Head/Camera/RayCast/Inventory
 
 export var speed = 5.0
 export var acceleration  = 10
@@ -14,6 +15,7 @@ export var jump_force: float = 5
 export var mouse_sensetivity = 0.1
 
 onready var head = $Head
+onready var ground_check: RayCast = $GroundCheck
 
 const GRAVITY = 20
 
@@ -30,16 +32,21 @@ func _input(event):
 func _physics_process(delta):
 	direction = Vector3.ZERO
 	
-	if not is_on_floor():
-		g_velocity -= GRAVITY * Vector3.UP * delta
+	full_connected = ground_check.is_colliding()
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if not is_on_floor():
+		g_velocity += GRAVITY * Vector3.DOWN * delta
+	elif is_on_floor() and full_connected:
+		g_velocity = -get_floor_normal()
+	else:
+		g_velocity.y = 0
+	
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or full_connected):
 		g_velocity = sqrt(jump_force * 2 * GRAVITY) * Vector3.UP
-		# g_velocity = jump_force * Vector3.UP
+		#g_velocity = jump_force * Vector3.UP
 	
 	if is_on_ceiling() and not is_on_floor():
 		g_velocity.y = 0
-		
 	
 	if Input.is_action_pressed("forward"):
 		direction -= transform.basis.z
