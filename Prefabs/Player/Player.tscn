@@ -39,6 +39,7 @@ visible = false
 
 [node name="Pistol" parent="Head/Camera/RayCast/Inventory" instance=ExtResource( 5 )]
 transform = Transform( -0.04, 6.03983e-09, -2.64009e-16, 2.36658e-30, -1.74846e-09, -0.04, -6.03983e-09, -0.04, 1.74846e-09, 0.082, -0.215, 0.177 )
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_left = 0.5
