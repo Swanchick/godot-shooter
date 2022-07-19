@@ -24,6 +24,9 @@ func trace_bullets():
 	
 	shoot_raycast.rotation_degrees = start_rotation
 
+func use():
+	animator.play("Take")
+
 func _shoot():
 	if animator.is_playing(): return
 	trace_bullets()

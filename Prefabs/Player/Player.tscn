@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Script/Player/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://Script/Player/Hand.gd" type="Script" id=2]
@@ -8,9 +8,52 @@
 [ext_resource path="res://Script/Player/Inventory.gd" type="Script" id=6]
 [ext_resource path="res://User Interface/InventoryUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Prefabs/Weapons/ak74.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Textures/8-BIT WONDER.TTF" type="DynamicFontData" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.25
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.2 ),
+"transitions": PoolRealArray( 1.68179 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Run"
+length = 0.7
+step = 0.025
+tracks/0/type = "transform"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray(  )
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.325, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 0.406126, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.01, 0, 0.011 ), Vector3( 0, 0, 0 ), Vector3( 0.01, 0, 0.011 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 9 )
 
 [node name="Player" type="KinematicBody" groups=["player"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.758435, 0 )
@@ -65,5 +108,17 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="InventoryUI" parent="." instance=ExtResource( 7 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Head/Camera/RayCast/Inventory")
+anims/RESET = SubResource( 2 )
+anims/Run = SubResource( 3 )
+
+[node name="SpeedDebug" type="Label" parent="."]
+margin_right = 172.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 4 )
+text = "
+"
 
 [connection signal="update_ui" from="Head/Camera/RayCast/Inventory" to="InventoryUI" method="_on_Inventory_update_ui"]

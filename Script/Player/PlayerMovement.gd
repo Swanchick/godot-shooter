@@ -18,6 +18,8 @@ export var mouse_sensetivity = 0.1
 
 onready var head = $Head
 onready var ground_check: RayCast = $GroundCheck
+onready var speed_debug = $SpeedDebug
+onready var animator = $AnimationPlayer
 
 const GRAVITY = 20
 
@@ -72,5 +74,12 @@ func _physics_process(delta):
 	movement.z = a_velocity.z
 	movement.x = a_velocity.x
 	movement.y = g_velocity.y
+	
+	
+	if bool(direction.length()) and is_on_floor():
+		if not animator.is_playing():
+			animator.play("Run")
+	else:
+		animator.play("RESET")
 	
 	move_and_slide(movement, Vector3.UP)

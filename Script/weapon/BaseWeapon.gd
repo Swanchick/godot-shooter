@@ -51,6 +51,8 @@ func _single_shoot():
 func _shoot():
 	pass
 
+func use():
+	pass
 
 func _process(delta):
 	transform.origin = transform.origin.linear_interpolate(start_pos - final_pos, weapon_sway * delta)

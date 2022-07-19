@@ -11,6 +11,7 @@ func take(weapon: String):
 		
 		if wep.weapon_name == weapon:
 			wep.set_visible(true)
+			wep.use()
 			current_weapon = wep
 
 func can_add(weapon: String) -> bool:
@@ -36,4 +37,8 @@ func _input(event):
 	
 	if int(button) > weapons.size(): return
 	
-	take(weapons[int(button)-1])
+	var weapon_name = weapons[int(button)-1]
+	
+	if current_weapon != null and current_weapon.weapon_name == weapon_name: return
+	
+	take(weapon_name)

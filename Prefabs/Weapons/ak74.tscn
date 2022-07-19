@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Models/ak74.glb" type="PackedScene" id=1]
 [ext_resource path="res://Script/weapon/Rifle.gd" type="Script" id=2]
@@ -67,6 +67,29 @@ tracks/2/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -15 ), Vector3( 0, 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "Take"
+length = 0.4
+tracks/0/type = "transform"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray(  )
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.258816, 0.225313 ),
+"update": 0,
+"values": [ Vector3( 0, -0.75, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
 [node name="ak74" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 weapon_name = "rifle"
@@ -81,3 +104,4 @@ transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
 root_node = NodePath("../Cube")
 anims/RESET = SubResource( 1 )
 anims/Shoot = SubResource( 2 )
+anims/Take = SubResource( 3 )
