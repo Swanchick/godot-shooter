@@ -2,10 +2,13 @@
 
 [sub_resource type="ProceduralSky" id=1]
 radiance_size = 0
-sky_top_color = Color( 0.298039, 0.298039, 0.298039, 1 )
-sky_horizon_color = Color( 0.160784, 0.160784, 0.160784, 1 )
+sky_top_color = Color( 0.454902, 0.729412, 1, 1 )
+sky_horizon_color = Color( 0.760784, 0.92549, 0.984314, 1 )
+sky_curve = 0.475022
+ground_curve = 0.0951367
 
 [resource]
-background_mode = 3
+background_mode = 1
 background_sky = SubResource( 1 )
-background_color = Color( 0.0235294, 0.0235294, 0.0235294, 1 )
+background_color = Color( 0.121569, 0, 0, 1 )
+ambient_light_color = Color( 0.309804, 0, 0, 1 )

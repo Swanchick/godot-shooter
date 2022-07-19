@@ -10,6 +10,11 @@ func trace_bullets():
 		shoot_raycast.force_raycast_update()
 		
 		if shoot_raycast.is_colliding():
+			var e = shoot_raycast.get_collider()
+			
+			if e != null and e.is_in_group("enemy"):
+				e.take_damage(_get_damage())
+			
 			var point = shoot_raycast.get_collision_point()
 			var s = sphere.instance()
 			

@@ -1,12 +1,11 @@
 extends Spatial
 class_name BaseWeapon
 
-var shoot_raycast: RayCast = get_parent()
+var shoot_raycast: RayCast
 
 var final_pos: Vector3 = Vector3.ZERO
 
 export var weapon_name: String = "base"
-export var slot: int = 1
 
 export var weapon_sway: float = 5
 export var weapon_accelaration: float = 0.1
@@ -15,6 +14,8 @@ export var max_range = 1
 export var spread_distance: float = 10
 export var start_rotation: Vector3 = Vector3.ZERO
 export var start_pos: Vector3 = Vector3.ZERO
+
+export var damage: Vector2 = Vector2.ZERO
 
 func _ready():
 	start_pos = transform.origin
@@ -39,6 +40,11 @@ func _input(event):
 		event.relative.y * 0.001
 	)
 
+func _get_damage() -> float:
+	var _damage: float = rand_range(damage.x, damage.y)
+	
+	return _damage
+
 func _single_shoot():
 	pass
 
@@ -56,4 +62,4 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("fire"):
 		_single_shoot()
-		
+	

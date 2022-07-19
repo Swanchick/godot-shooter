@@ -11,8 +11,9 @@ func trace_bullet():
 		shoot_raycast.rotation_degrees = dir
 		
 		shoot_raycast.force_raycast_update()
-		var e = shoot_raycast.get_collider()
 		
+		var e = shoot_raycast.get_collider()
+			
 		if e != null and e.is_in_group("enemy"):
 			e.take_damage(_get_damage())
 		
@@ -25,9 +26,8 @@ func trace_bullet():
 	
 	shoot_raycast.rotation_degrees = start_rotation
 
-func _single_shoot():
+func _shoot():
 	if animator.is_playing(): return
 	
-	animator.play("Shoot")
 	trace_bullet()
-	
+	animator.play("Shoot")

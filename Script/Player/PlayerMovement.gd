@@ -6,6 +6,8 @@ var a_velocity = Vector3()
 var g_velocity = Vector3()
 var full_connected: bool = false
 
+var can_do_jump: bool = false
+
 onready var inventory = $Head/Camera/RayCast/Inventory
 
 export var speed = 5.0
@@ -36,14 +38,19 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		g_velocity += GRAVITY * Vector3.DOWN * delta
+			
 	elif is_on_floor() and full_connected:
 		g_velocity = -get_floor_normal()
+		can_do_jump = true
 	else:
 		g_velocity.y = 0
 	
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or full_connected):
 		g_velocity = sqrt(jump_force * 2 * GRAVITY) * Vector3.UP
 		#g_velocity = jump_force * Vector3.UP
+	elif Input.is_action_just_pressed("jump") and not is_on_floor() and can_do_jump:
+		g_velocity = sqrt(jump_force * 2 * GRAVITY) * Vector3.UP
+		can_do_jump = false
 	
 	if is_on_ceiling() and not is_on_floor():
 		g_velocity.y = 0
