@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody",
+"class": "BaseEnemy",
+"language": "GDScript",
+"path": "res://Script/Enemy/BaseEnemy.gd"
+}, {
 "base": "Spatial",
 "class": "BaseWeapon",
 "language": "GDScript",
 "path": "res://Script/weapon/BaseWeapon.gd"
+}, {
+"base": "Spatial",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://Script/Player/Inventory.gd"
 }, {
 "base": "LiquidLayer",
 "class": "LavaLayer",
@@ -170,7 +180,9 @@ _global_script_classes=[ {
 "path": "res://addons/qodot/game_definitions/worldspawn_layers/liquid/water.gd"
 } ]
 _global_script_class_icons={
+"BaseEnemy": "",
 "BaseWeapon": "",
+"Inventory": "",
 "LavaLayer": "",
 "LiquidLayer": "",
 "PhysicsBall": "",

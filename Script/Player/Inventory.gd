@@ -1,9 +1,13 @@
 extends Spatial
+class_name Inventory
 
 signal update_ui(weapons)
 
 var weapons: Array = []
 var current_weapon: Spatial
+
+func _ready():
+	G.inventory = self
 
 func take(weapon: String):
 	for wep in get_children():

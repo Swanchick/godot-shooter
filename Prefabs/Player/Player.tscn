@@ -53,6 +53,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="DynamicFont" id=4]
+size = 24
 font_data = ExtResource( 9 )
 
 [node name="Player" type="KinematicBody" groups=["player"]]
@@ -114,11 +115,15 @@ root_node = NodePath("../Head/Camera/RayCast/Inventory")
 anims/RESET = SubResource( 2 )
 anims/Run = SubResource( 3 )
 
-[node name="SpeedDebug" type="Label" parent="."]
-margin_right = 172.0
-margin_bottom = 56.0
+[node name="Health" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = -43.0
+margin_right = 212.0
+margin_bottom = -12.0
 custom_fonts/font = SubResource( 4 )
-text = "
-"
+text = "HP 100"
+valign = 2
 
 [connection signal="update_ui" from="Head/Camera/RayCast/Inventory" to="InventoryUI" method="_on_Inventory_update_ui"]

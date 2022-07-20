@@ -15,15 +15,14 @@ export var air_acceleration = 2
 export var floor_acceleration  = 10
 export var jump_force: float = 5
 export var strafe_speed: float = 10
+export var health: float = 100
 
 export var mouse_sensetivity = 0.1
 
 onready var head = $Head
 onready var ground_check: RayCast = $GroundCheck
-onready var speed_debug = $SpeedDebug
+onready var health_label = $Health
 onready var animator = $AnimationPlayer
-
-var camera_rot = head.rotation_degrees
 
 var GRAVITY = G.GRAVITY
 
@@ -38,17 +37,25 @@ func _input(event):
 	head.rotate_x(deg2rad(-event.relative.y * mouse_sensetivity))
 	head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
 
+func _kill():
+	get_tree().quit()
+
+func take_damage(damage: float):
+	health -= damage
+	
+	if health <= 0:
+		_kill()
+
 func _shake():
 	pass
+
+func _process(delta):
+	health_label.text = "HP " + str(round(health))
 
 func _physics_process(delta):
 	direction = Vector3.ZERO
 	
 	full_connected = ground_check.is_colliding()
-	
-	if Input.is_action_just_pressed("Strafe"):
-		pass
-		
 	
 	if not is_on_floor():
 		g_velocity += GRAVITY * Vector3.DOWN * delta
