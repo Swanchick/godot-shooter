@@ -5,14 +5,16 @@ var movement = Vector3()
 var a_velocity = Vector3()
 var g_velocity = Vector3()
 var full_connected: bool = false
-
+var acceleration: float = 0
 var can_do_jump: bool = false
 
 onready var inventory = $Head/Camera/RayCast/Inventory
 
 export var speed = 5.0
-export var acceleration  = 10
+export var air_acceleration = 2
+export var floor_acceleration  = 10
 export var jump_force: float = 5
+export var strafe_speed: float = 10
 
 export var mouse_sensetivity = 0.1
 
@@ -21,9 +23,10 @@ onready var ground_check: RayCast = $GroundCheck
 onready var speed_debug = $SpeedDebug
 onready var animator = $AnimationPlayer
 
-const GRAVITY = 20
+var GRAVITY = G.GRAVITY
 
 func _ready():
+	G.player = self
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event):
@@ -40,11 +43,13 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		g_velocity += GRAVITY * Vector3.DOWN * delta
-			
+		acceleration = air_acceleration
 	elif is_on_floor() and full_connected:
 		g_velocity = -get_floor_normal()
 		can_do_jump = true
+		acceleration = floor_acceleration
 	else:
+		acceleration = floor_acceleration
 		g_velocity.y = 0
 	
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or full_connected):

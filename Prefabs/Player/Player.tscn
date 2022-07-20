@@ -91,7 +91,7 @@ transform = Transform( -8.74228e-08, -7.10543e-15, -1, 1, 3.82138e-15, -8.74228e
 visible = false
 
 [node name="GroundCheck" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.736149, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.680078, 0 )
 enabled = true
 cast_to = Vector3( 0, -0.3, 0 )
 

@@ -7,7 +7,7 @@ var final_pos: Vector3 = Vector3.ZERO
 
 export var weapon_name: String = "base"
 
-export var weapon_sway: float = 5
+export var weapon_sway: float = 10
 export var weapon_accelaration: float = 0.1
 
 export var max_range = 1
