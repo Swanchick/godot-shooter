@@ -23,6 +23,8 @@ onready var ground_check: RayCast = $GroundCheck
 onready var speed_debug = $SpeedDebug
 onready var animator = $AnimationPlayer
 
+var camera_rot = head.rotation_degrees
+
 var GRAVITY = G.GRAVITY
 
 func _ready():
@@ -36,10 +38,17 @@ func _input(event):
 	head.rotate_x(deg2rad(-event.relative.y * mouse_sensetivity))
 	head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
 
+func _shake():
+	pass
+
 func _physics_process(delta):
 	direction = Vector3.ZERO
 	
 	full_connected = ground_check.is_colliding()
+	
+	if Input.is_action_just_pressed("Strafe"):
+		pass
+		
 	
 	if not is_on_floor():
 		g_velocity += GRAVITY * Vector3.DOWN * delta
