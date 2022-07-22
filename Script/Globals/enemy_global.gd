@@ -6,7 +6,7 @@ var enemys = {
 }
 
 var waves = {
-	"fly_monster": 10,
+	"fly_monster": 30,
 	"monster1": 100
 }
 
