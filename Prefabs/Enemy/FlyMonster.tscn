@@ -305,6 +305,7 @@ height = 0.776087
 [node name="FlyMonster" type="KinematicBody" groups=["enemy"]]
 script = ExtResource( 3 )
 enemy_name = "fly_monster"
+health = 50.0
 speed = 10.0
 threshold = 8
 rotation_speed = 10.0

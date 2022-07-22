@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Prefabs/Items/PistolItem.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Prefabs/Items/ShotgunItem.tscn" type="PackedScene" id=8]
 [ext_resource path="res://default_env.tres" type="Environment" id=9]
-[ext_resource path="res://Prefabs/Enemy/FlyMonster.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Prefabs/Entities/EnemySpanwer.tscn" type="PackedScene" id=11]
 
 [sub_resource type="NavigationMesh" id=19]
@@ -64,11 +63,7 @@ light_color = Color( 1, 0.639216, 0.639216, 1 )
 
 [node name="Navigation" type="Navigation" parent="."]
 
-[node name="FlyMonster" parent="Navigation" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 2, 7.75 )
-
 [node name="EnemySpanwer" parent="Navigation" instance=ExtResource( 11 )]
-can_work = false
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
 navmesh = SubResource( 19 )

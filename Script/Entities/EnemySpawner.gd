@@ -9,18 +9,20 @@ export var max_spawns = 200
 
 export var can_work = true
 
+var current_wave = E.waves
+
 func _spawn_monsters():
 	if not can_work: return
-	 
-	if count == max_spawns:
-		$SpawnerTimer.stop() # Please
 	
 	path_folow.unit_offset = randf()
 	
-	var m: KinematicBody = monster.instance()
+	var m = E.get_random_monster()
 	
-	m.global_transform.origin = path_folow.global_transform.origin
+	if current_wave[m] == 0: return
 	
-	get_tree().get_current_scene().get_node("./Navigation").add_child(m)
+	current_wave[m] -= 1
 	
-	count += 1
+	var _m = E.enemys[m].instance()
+	_m.global_transform.origin = path_folow.global_transform.origin
+	
+	get_tree().get_current_scene().get_node("./Navigation").add_child(_m)
