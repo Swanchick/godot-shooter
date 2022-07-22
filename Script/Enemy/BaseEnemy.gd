@@ -62,11 +62,9 @@ func _move(delta):
 			is_moving = true
 			move_and_slide(velocity, Vector3.UP)
 
-func _physics_process(delta):
-	_move(delta)
-	
+func _gravity(delta):
 	if not is_on_floor():
-		g_vel += GRAVITY
+		g_vel += GRAVITY * delta
 	else:
 		g_vel = 0
 		

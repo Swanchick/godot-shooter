@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Script/Entities/EnemySpawner.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/Enemy/Monster1.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve3D" id=23]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 2, 0, 1.25, 0, 0, 0, 0, 0, 0, -81, 0, 1.25, 0, 0, 0, 0, 0, 0, -80.75, 0, -80.25, 0, 0, 0, 0, 0, 0, 2, 0, -80.25, 0, 0, 0, 0, 0, 0, 2, 0, 1.25 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0 )
+}
+
+[node name="EnemySpanwer" type="Path"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.25, 0.5, 39.75 )
+curve = SubResource( 23 )
+script = ExtResource( 1 )
+monster = ExtResource( 2 )
+
+[node name="PathFollow" type="PathFollow" parent="."]
+transform = Transform( 0.610432, 0, 0.792069, 0, 1, 0, -0.792069, 0, 0.610432, 2, 0, 1.25 )
+
+[node name="SpawnerTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="SpawnerTimer" to="." method="_spawn_monsters"]

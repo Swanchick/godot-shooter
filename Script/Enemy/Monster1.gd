@@ -23,6 +23,10 @@ func _process(delta):
 	else:
 		can_hit = false
 
+func _physics_process(delta):
+	_move(delta)
+	_gravity(delta)
+
 func _on_Timer_timeout():
 	player = G.player
 	if player == null: return

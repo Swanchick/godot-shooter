@@ -146,6 +146,7 @@ script = ExtResource( 2 )
 enemy_name = "monster1"
 health = 10.0
 speed = 200.0
+threshold = 1
 damage = Vector2( 10, 30 )
 
 [node name="Monster1" type="Spatial" parent="."]

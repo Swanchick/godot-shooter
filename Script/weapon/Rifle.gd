@@ -17,12 +17,7 @@ func trace_bullet():
 		if e != null and e.is_in_group("enemy"):
 			e.take_damage(_get_damage())
 		
-		var point = shoot_raycast.get_collision_point()
-		var s = sphere.instance()
-		
-		s.global_transform.origin = point
-		
-		get_tree().get_current_scene().add_child(s)
+		_spawn_decal(shoot_raycast.get_collider())
 	
 	shoot_raycast.rotation_degrees = start_rotation
 

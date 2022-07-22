@@ -17,6 +17,8 @@ export var start_pos: Vector3 = Vector3.ZERO
 
 export var damage: Vector2 = Vector2.ZERO
 
+export (PackedScene) var bullet_hole
+
 func _ready():
 	start_pos = transform.origin
 	shoot_raycast = get_parent().get_parent()
@@ -39,6 +41,17 @@ func _input(event):
 		0,
 		event.relative.y * 0.001
 	)
+
+func _spawn_decal(collider):
+	if not shoot_raycast.is_colliding() or collider.is_in_group("enemy"): return
+	
+	var b: Spatial = bullet_hole.instance()
+	
+	get_tree().get_current_scene().add_child(b)
+	
+	b.global_transform.origin = shoot_raycast.get_collision_point()
+	
+	b.look_at(shoot_raycast.get_collision_point() - shoot_raycast.get_collision_normal(), Vector3.UP)
 
 func _get_damage() -> float:
 	var _damage: float = rand_range(damage.x, damage.y)
