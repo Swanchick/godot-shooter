@@ -36,5 +36,5 @@ func _on_Timer_timeout():
 func _on_HitTimer_timeout():
 	if not can_hit: return
 	
-	
 	player.take_damage(_get_damage())
+	player.start_shake(4, 0.1, 20)

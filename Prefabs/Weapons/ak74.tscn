@@ -95,7 +95,7 @@ tracks/1/keys = {
 script = ExtResource( 2 )
 weapon_name = "rifle"
 spread_distance = 3.0
-damage = Vector2( 25, 55 )
+damage = Vector2( 25, 70 )
 bullet_hole = ExtResource( 4 )
 sphere = ExtResource( 3 )
 

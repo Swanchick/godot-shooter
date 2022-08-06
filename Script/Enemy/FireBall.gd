@@ -1,5 +1,7 @@
 extends KinematicBody
 
+var damage: Vector2
+
 export var speed: float = 250
 
 func _ready():
@@ -18,4 +20,5 @@ func destroy():
 func _on_player_enter(body):
 	if not body.is_in_group("player"): return
 	
-	body.take_damage(50)
+	body.take_damage(rand_range(damage.x, damage.y))
+	body.start_shake(10, 0.1, 20)

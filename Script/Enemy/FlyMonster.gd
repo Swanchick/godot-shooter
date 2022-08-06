@@ -18,7 +18,6 @@ func _ready():
 	animator.play("Fly")
 	start_head_pos = head.transform.origin
 
-
 func _gravity(delta):
 	var y = global_transform.origin.y
 	
@@ -86,6 +85,8 @@ func shoot():
 		rotation.y,
 		head.rotation.z
 	)
+	
+	f.damage = damage
 	
 	f.rotation = rot
 	

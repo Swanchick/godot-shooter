@@ -11,10 +11,9 @@ var is_moving: bool = false
 export var enemy_name: String = "base" 
 export var health: float = 100
 export var speed: float = 500
-export var threshold = 2
+export var threshold: float = 2
 export var rotation_speed: float = 5
 export var damage: Vector2 = Vector2.ZERO
-
 
 onready var nav: Navigation = get_parent()
 

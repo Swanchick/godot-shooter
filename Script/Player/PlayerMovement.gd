@@ -7,6 +7,7 @@ var g_velocity = Vector3()
 var full_connected: bool = false
 var acceleration: float = 0
 var can_do_jump: bool = false
+var can_shake: bool = false
 
 onready var inventory = $Head/Camera/RayCast/Inventory
 
@@ -20,13 +21,22 @@ export var health: float = 100
 export var mouse_sensetivity = 0.1
 
 onready var head = $Head
+onready var camera = $Head/Camera
 onready var ground_check: RayCast = $GroundCheck
 onready var health_label = $Health
 onready var animator = $AnimationPlayer
 
+var camera_start_pos: Vector3
 var GRAVITY = G.GRAVITY
 
+var shake_end_time: float = 0
+var shake_time: float = 0
+var shake: bool = false
+var shake_impulse: float = 0
+var shake_speed: float = 4
+
 func _ready():
+	camera_start_pos = camera.rotation_degrees
 	G.player = self
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -46,13 +56,40 @@ func take_damage(damage: float):
 	if health <= 0:
 		_kill()
 
-func _shake():
-	pass
+func start_shake(impulse: float, time: float, speed: float):
+	if shake: return
+	
+	shake_impulse = impulse
+	shake_end_time = time
+	shake_speed = speed
+	shake = true
+
+func _shake(delta):
+	if not shake: 
+		camera.rotation_degrees = camera.rotation_degrees.linear_interpolate(camera_start_pos, delta * shake_speed)
+		return
+	
+	if shake_time >= shake_end_time: 
+		shake = false
+		shake_time = 0
+		return
+	
+	shake_time += delta
+	
+	var rot = Vector3(
+		rand_range(-shake_impulse, shake_impulse),
+		rand_range(-shake_impulse, shake_impulse),
+		0
+	)
+	
+	camera.rotation_degrees = camera.rotation_degrees.linear_interpolate(rot, delta * shake_speed)
 
 func _process(delta):
 	health_label.text = "HP " + str(round(health))
 
 func _physics_process(delta):
+	_shake(delta)
+	
 	direction = Vector3.ZERO
 	
 	full_connected = ground_check.is_colliding()
@@ -74,6 +111,9 @@ func _physics_process(delta):
 	elif Input.is_action_just_pressed("jump") and not is_on_floor() and can_do_jump:
 		g_velocity = sqrt(jump_force * 2 * GRAVITY) * Vector3.UP
 		can_do_jump = false
+	
+	if Input.is_action_just_pressed("Strafe"):
+		start_shake(4, 0.1, 20)
 	
 	if is_on_ceiling() and not is_on_floor():
 		g_velocity.y = 0

@@ -126,4 +126,8 @@ custom_fonts/font = SubResource( 4 )
 text = "HP 100"
 valign = 2
 
+[node name="ShakeTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="update_ui" from="Head/Camera/RayCast/Inventory" to="InventoryUI" method="_on_Inventory_update_ui"]
