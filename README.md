@@ -1,2 +1,1 @@
-# MurderGame
- Game like doom but in 3d 
+# Godot example shooter game
